@@ -18,7 +18,7 @@ def create_app():
     app = Flask(__name__, static_folder='static')
 
     app.config['SECRET_KEY'] = 'here'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://sdsgoubmroepjg:bea71326aeb64aa1a2675b5e2f895b7a2ef59017a29ed16ab8b4a2acf9558e43@ec2-54-161-189-150.compute-1.amazonaws.com:5432/dafcbomp5q6jqs'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ejvchrmncdntmt:a46905a0329423170a3da2c4e937f57f1590ac3cfcff3d8daed25278606e64b5@ec2-54-145-188-92.compute-1.amazonaws.com:5432/d634oto7gkjca'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['UPLOAD_FOLDER'] = 'static/images'
     app.config['MAIL_SERVER'] = 'mail74.onamae.ne.jp'

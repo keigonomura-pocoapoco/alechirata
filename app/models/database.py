@@ -4,7 +4,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 from ..config.config import CONNECT_STR
 
-engine = create_engine('postgresql://sdsgoubmroepjg:bea71326aeb64aa1a2675b5e2f895b7a2ef59017a29ed16ab8b4a2acf9558e43@ec2-54-161-189-150.compute-1.amazonaws.com:5432/dafcbomp5q6jqs', echo=False)
+engine = create_engine('postgresql://ejvchrmncdntmt:a46905a0329423170a3da2c4e937f57f1590ac3cfcff3d8daed25278606e64b5@ec2-54-145-188-92.compute-1.amazonaws.com:5432/d634oto7gkjca', echo=False)
 session = scoped_session(
             sessionmaker(
                 autocommit = False,
