@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}UPLOAD{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <script rel="text/javascript" type="text/javascript" src="{{url_for('static',filename='js/file_reader.js')}}"></script>
+{% endblock %}
+
+{% block content %}
+<section class="picture" id="upload">
+
+    <div class="titles">
+        <h2 class="section-title"><a href="/admin/picture/folder/{{folder_name}}">{{folder_name}}</a>｜写真をアップロード</h2>
+        <p class="section-subtitle">{{folder_name}}</a>｜Upload Picture(s)</p>
+    </div>
+
+    <div class="inner">
+        {% from "_formhelpers.html" import render_field %}
+        <form action="/admin/picture/folder/{{folder_name}}/upload/" method="POST" enctype="multipart/form-data">
+            {% with messages = get_flashed_messages(category_filter=["error"]) %}
+                {% if messages %}
+                    {% for message in messages: %}
+                    <div class="error-message">
+                        {{ messages[0] }}
+                    </div>
+                    {% endfor%}
+                {% endif %}
+            {% endwith %}
+
+            {{ render_field(form.pictures) }}<span id="file-chosen">No file chosen</span>
+
+            <div class="policy-confirmation">
+                <div class="confirmation-btn"><input type="submit" value="Upload"></div>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,1080 @@
+/*
+Theme Name: Flask_template
+Author: Keigo Nomura
+Author URI: 
+Version: 1.0
+ */
+
+* {
+	margin: 0;
+	padding: 0;
+
+	min-width: 0;
+	min-height: 0;
+
+	box-sizing: border-box;
+
+	font-family: "Roboto Condensed", sans-serif;
+}
+
+::before,
+::after {
+	box-sizing: border-box;
+}
+
+header #nav-input {
+	display: none;
+}
+header #drawer-icon {
+	position: absolute;
+	top: 18px;
+	right: 25px;
+	/*アイコン面積*/
+	width: 22px;
+	height: 18px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	z-index: 4;
+}
+/*ハンバーガーアイコンをCSSだけで表現*/
+header #drawer-icon span {
+	content: "";
+
+	height: 1px;
+	width: 30px;
+
+	border-radius: 3px;
+
+	-webkit-transition: 0.2s ease-in-out;
+	-moz-transition: 0.2s ease-in-out;
+	transition: 0.2s ease-in-out;
+
+	background-color: black;
+}
+
+header #nav-input:checked ~ #drawer-icon > span:nth-of-type(3) {
+	display: none;
+}
+header #nav-input:checked ~ #drawer-icon > span {
+	position: absolute;
+	top: 10px;
+	left: 0px;
+
+	background-color: white;
+
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+header #nav-input:checked ~ #drawer-icon > span:nth-of-type(2) {
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+/* ドロワーの下地*/
+header #drawer-close {
+	display: none;
+
+	position: fixed;
+	top: 0;
+	right: 0;
+
+	width: 100%;
+	height: 100%;
+
+	transition: 0.3s ease-in-out;
+
+	opacity: 0.9;
+
+	background-color: black;
+
+	z-index: 3;
+}
+
+header {
+	width: 100%;
+	display: flex;
+	align-items: baseline;
+}
+
+header > h1 {
+	margin: 15px 0 0 15px;
+
+	font-size: 24px;
+}
+
+header > h1 > a {
+	color: black;
+	text-decoration: none;
+}
+/*中身*/
+header nav {
+	display: flex;
+	/* overflow: auto; */
+	flex-direction: column;
+	justify-content: flex-start;
+
+	width: 40%;
+	margin: 0;
+
+	position: fixed;
+	top: 0;
+	right: 0;
+
+	height: 100%;
+
+	transition: 0.35s ease-in-out;
+
+	-webkit-transform: translateX(105%);
+	transform: translateX(105%);
+
+	font-weight: normal;
+
+	color: white;
+	background-color: black;
+
+	z-index: 3;
+}
+
+/* headerの共通ul CSS */
+header nav ul,
+footer ul {
+	width: 100%;
+
+	margin-left: 13px;
+	margin-bottom: 0px;
+	padding: 0px;
+
+	list-style: none;
+}
+
+header nav ul li,
+footer ul li {
+	margin: 32px 0 0 0;
+	border-bottom: none;
+	border-bottom-width: 0;
+
+	font-size: 18px;
+}
+
+header nav ul li a,
+footer ul li a {
+	text-decoration: none;
+	color: white;
+}
+/* headerの共通ul CSS 終了*/
+
+/* header ul#global-menu */
+header nav ul#global-menu {
+	margin-top: 75px;
+}
+
+header nav ul#global-menu li select,
+footer ul#global-menu li select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: none;
+
+	width: 80%;
+	font-size: 14px;
+
+	color: white;
+	background-color: black;
+
+	background-image: linear-gradient(
+			45deg,
+			transparent 50%,
+			rgba(256, 256, 256, 1) 20%
+		),
+		linear-gradient(135deg, white 50%, transparent 50%);
+	background-size: 5px 5px, 5px 5px;
+	background-position: calc(77.5% - 10px) 50%, calc(77.5% - 5px) 50%;
+	background-repeat: no-repeat;
+}
+
+/* header ul#global-menu 終了*/
+
+/*チェックが入ったら下地を入れる。*/
+header #nav-input:checked ~ #drawer-close {
+	/* これがないとinputを外す場所がなくなる。*/
+	display: block;
+}
+
+/* 同様に下地の上にリストを表示　*/
+header #nav-input:checked ~ nav {
+	-webkit-transform: translateX(15%);
+	transform: translateX(15%);
+}
+/* header 終了 */
+
+/* セクション共通要素 */
+
+section {
+	width: 100%;
+
+	margin: 24px auto;
+}
+
+section div.titles {
+	width: 85%;
+	margin: 12px auto;
+	padding: 8px 0px 2.5px 0px;
+}
+section h2.section-title {
+	position: relative;
+	padding-left: 26px;
+	letter-spacing: 0.04em;
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 1.4;
+}
+section h2.section-title a {
+	text-decoration: none;
+	color: black;
+}
+
+section h2.section-title::before {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	width: 16px;
+	height: 1px;
+	background-color: #222;
+	content: "";
+}
+
+section p.section-subtitle {
+	display: block;
+	margin-top: 8px;
+	padding-left: 28px;
+	color: #7b3f00;
+	letter-spacing: 0.075em;
+	line-height: 1.25;
+
+	font-size: 12px;
+}
+
+section div.inner {
+	width: 90%;
+	margin: 0 auto;
+}
+/* セクション共通要素 終了*/
+
+/* トップページ */
+
+section#home div.pictures-test {
+	width: 100%;
+
+	margin: 20px auto;
+}
+
+section#home div.pictures-test img {
+	width: 100%;
+	height: 82.5vh;
+	object-fit: cover;
+}
+
+/* トップページ 終了*/
+
+/* Adminページ */
+section#admin div.inner div.app-item {
+	width: 80%;
+	margin: 12px auto;
+
+	border: 1px solid #e8e8e8;
+	border-radius: 7px;
+
+	text-align: center;
+}
+
+section#admin div.inner div.app-item a {
+	display: inline-block;
+	width: 100%;
+	padding: 8px 16px;
+	text-decoration: none;
+	color: #06c;
+}
+
+section#admin div.inner div.app-item a img {
+	width: 100%;
+	height: 15vh;
+	margin-bottom: 8px;
+	object-fit: cover;
+}
+/* Adminページ 終了 */
+
+/* Admin Pictureページ 共通*/
+
+section.picture div.inner > a {
+	font-weight: bold;
+	text-decoration: none;
+	color: #06c;
+	padding-left: 38px;
+}
+/* Admin Pictureページ 共通 終了 */
+
+/* Admin Picture */
+section#manage div.folder-list {
+	width: 100%;
+	margin: 12px auto;
+}
+
+section#manage div.folder-list div.folder {
+	width: 80%;
+	margin: 0 auto;
+}
+
+/* Admin Picture & Admin Picture Folder 共通 */
+div.folder-list div.folder input[type="checkbox"],
+div.image-gallery div.image input[type="checkbox"] {
+	display: none;
+}
+
+div.folder-list div.folder label,
+div.image-gallery div.image label {
+	border: 1px solid #fff;
+	padding: 12px 0;
+	display: inline-block;
+	width: 100%;
+	position: relative;
+	cursor: pointer;
+	border-top: 1px solid #708090;
+}
+
+div.folder-list div.folder label:before,
+div.image-gallery div.image label:before {
+	background-color: white;
+	color: white;
+	content: " ";
+	display: block;
+	border-radius: 50%;
+	border: 1px solid #06c;
+	position: absolute;
+	top: -5px;
+	left: -5px;
+	width: 25px;
+	height: 25px;
+	text-align: center;
+	line-height: 28px;
+	transition-duration: 0.4s;
+	transform: scale(0);
+}
+
+div.folder-list div.folder input:checked + label,
+div.image-gallery div.image input:checked + label {
+	border-color: #06c;
+}
+
+div.folder-list div.folder input:checked + label:before,
+div.image-gallery div.image input:checked + label:before {
+	content: "✓";
+	background-color: #06c;
+	transform: scale(1);
+}
+
+div.folder-list div.folder input:checked + label a,
+div.image-gallery div.image input:checked + label img {
+	transform: scale(0.85);
+	/* box-shadow: 0 0 5px #333; */
+	z-index: -1;
+}
+
+section.picture div.inner div.error-message {
+	width: 80%;
+	margin: 8px auto;
+}
+
+section.picture div.inner form div.manage-buttons {
+	width: 78.5%;
+
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 28px;
+
+	margin: 0 auto;
+
+	z-index: 2;
+}
+
+section.picture div.inner form div.manage-buttons div.confirmation-btn {
+	margin: 20px auto 0;
+}
+
+section.picture
+	div.inner
+	form
+	div.manage-buttons
+	div.confirmation-btn
+	input[type="button"],
+section.picture div.inner form div.manage-buttons input[type="submit"] {
+	display: inline-block;
+
+	width: 100%;
+	height: 64px;
+
+	padding: 10px;
+
+	text-align: center;
+	text-decoration: none;
+
+	border: 1px black solid;
+
+	font-size: 14px;
+
+	color: white;
+	background-color: #06c;
+}
+
+section.picture
+	div.inner
+	form
+	div.manage-buttons
+	div.confirmation-btn
+	input[type="button"] {
+	border: 1px #06c solid;
+}
+
+section.picture div.inner form div.manage-buttons input[type="submit"] {
+	background-color: black;
+}
+/* Admin Picture & Admin Picture Folder 共通 終了 */
+
+section#manage div.folder-list div.folder label a {
+	display: inline-block;
+
+	padding-left: 12px;
+
+	transition: 0.4s;
+
+	text-decoration: none;
+	color: #06c;
+
+	font-size: 16px;
+}
+/* Admin Picture 終了 */
+
+/* Admin Picture Folder */
+div.image-gallery {
+	width: 100%;
+	margin: 12px auto;
+}
+
+div.image-gallery div.image {
+	width: 87.5%;
+	margin: 0 auto;
+}
+
+/* Admin Picture & Admin Picture Folder 共通上書き */
+div.image-gallery div.image label {
+	margin: 8px auto;
+	padding: 10px;
+	border-top: 1px solid #fff;
+}
+
+div.image-gallery div.image input:checked + label img {
+	transform: scale(0.9);
+}
+/* Admin Picture & Admin Picture Folder 共通上書き 終了 */
+
+div.image-gallery div.image label img {
+	height: 25vh;
+	width: 100%;
+
+	object-fit: cover;
+	transition-duration: 0.2s;
+	transform-origin: 50% 50%;
+}
+/* Admin Picture Folder 終了 */
+
+/* Admin Picture Folder Upload */
+section#upload div.inner {
+	width: 85%;
+}
+
+section#upload div.inner form {
+	width: 82.5%;
+	margin: 28px auto;
+}
+
+section#upload div.inner form div.input-area input[type="file"] {
+	display: none;
+}
+
+section#upload div.inner form div.input-area input:not(:placeholder-shown) {
+	border-bottom: none;
+}
+
+section#upload div.inner form div.input-area {
+	margin: 8px 0;
+}
+
+section#upload div.inner form span#file-chosen {
+	font-size: 14px;
+}
+
+section#upload div.inner form div.input-area input + label {
+	position: relative;
+}
+
+section#upload
+	div.inner
+	form
+	div.input-area
+	input:not(:placeholder-shown)
+	+ label {
+	transform: none;
+	font-size: 16px;
+}
+
+section#upload div.inner form div.policy-confirmation .confirmation-btn input {
+	background-color: #06c;
+	color: white;
+}
+
+section#upload div.inner form div.policy-confirmation .confirmation-btn {
+	margin: 28px auto 0;
+}
+
+/* Admin Picture Folder Upload 終了 */
+
+/* signup/login ページ */
+section.login-signup {
+	margin: 36px auto;
+}
+
+section.login-signup label::after,
+section#new_folder label::after {
+	content: "*";
+	color: #7b3f00;
+}
+
+.error-message {
+	font-size: 13px;
+	margin: 8px 0;
+	color: #06c;
+}
+
+ul.errors {
+	list-style-type: none;
+}
+
+ul.errors .error-message {
+	margin: 0px 0;
+}
+
+.error-message a {
+	color: #7b3f00;
+}
+
+section.login-signup form {
+	width: 100%;
+}
+
+form div.input-area {
+	position: relative;
+
+	margin: 32px 0;
+}
+
+form div.input-area > input {
+	width: 100%;
+
+	font-size: 15px;
+
+	border: none;
+	outline: none;
+	border-bottom: 1px solid #708090;
+}
+
+form div.input-area input + label {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+
+	transform-origin: top left;
+	transition: transform 0.1s ease-in;
+
+	font-size: 12.5px;
+}
+
+form div.input-area input::placeholder {
+	color: transparent;
+}
+
+form div.input-area input:focus {
+	border-bottom: 1px solid #06c;
+}
+
+form div.input-area input:focus + label {
+	transform: translateY(-1rem) scale(0.75);
+	font-size: 10px;
+	color: #06c;
+}
+
+form div.input-area input:not(:placeholder-shown) {
+	border-bottom: 1px solid #06c;
+}
+
+form div.input-area input:not(:placeholder-shown) + label {
+	transform: translateY(-1rem) scale(0.75);
+	font-size: 10px;
+	color: #06c;
+}
+
+section.login-signup form div.input-area input[type="checkbox"] {
+	width: unset;
+}
+
+form div.policy-confirmation {
+	width: 100%;
+	margin: 0 auto;
+}
+
+form div.policy-confirmation .confirmation-btn {
+	position: relative;
+	margin: 32px auto 0;
+}
+
+form div.policy-confirmation .confirmation-btn input {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+
+	width: 100%;
+	height: 64px;
+	border: 3px solid #06c;
+	border-radius: 3px;
+	background-color: #fff;
+	color: #06c;
+	letter-spacing: 0.1em;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 1;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+section.login-signup
+	form
+	div.policy-confirmation
+	.confirmation-btn
+	input:focus {
+	outline: none;
+}
+
+form div.policy-confirmation p {
+	margin-top: 32px;
+	font-size: 11px;
+	line-height: 2;
+}
+
+form div.policy-confirmation p > a {
+	color: #06c;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+section.login-signup form div.login-reset {
+	margin: 12px 0;
+}
+
+section.login-signup form div.login-reset a {
+	text-decoration: none;
+	font-size: 11.5px;
+
+	color: #06c;
+}
+
+/* signup/login ページ 終了 */
+
+/* Aboutページ */
+section#about div.inner p {
+	line-height: 1.5;
+}
+/* Aboutページ 終了 */
+
+@media screen and (min-width: 520px) {
+	header #drawer-icon {
+		top: 30px;
+		right: 35px;
+
+		width: 45px;
+	}
+
+	header #drawer-icon span {
+		width: 45px;
+	}
+
+	header nav {
+		width: 30%;
+	}
+
+	header nav ul {
+		margin-left: 20px;
+	}
+
+	header nav ul li:first-of-type {
+		display: none;
+	}
+
+	header nav ul li,
+	footer ul li {
+		margin: 50px 0 0 0;
+		font-size: 20px;
+	}
+
+	header nav ul#global-menu li select,
+	footer ul#global-menu li select {
+		width: 70%;
+		font-size: 20px;
+	}
+	/* header用CSS 終了 */
+
+	/* Adminページ */
+	section#admin div.inner div.app-item {
+		width: 100%;
+	}
+
+	section#admin div.inner div.app-item a img {
+		height: 17.5vh;
+		margin-bottom: 6px;
+	}
+	/* Adminページ 終了 */
+
+	/* セクション共通要素 */
+	section div.titles {
+		width: 65%;
+	}
+
+	section h2.section-title {
+		padding-left: 46px;
+		font-size: 32px;
+	}
+
+	section h2.section-title::before {
+		width: 30px;
+	}
+
+	section p.section-subtitle {
+		font-size: 18px;
+		margin-top: 13.5px;
+		padding-left: 52px;
+	}
+
+	section div.inner {
+		width: 55%;
+		margin: 0 auto;
+	}
+	/* セクション共通要素 終了*/
+
+	/* Admin Picture */
+	section#manage div.folder-list div.folder {
+		width: 90%;
+	}
+	/* Admin Picture 終了 */
+
+	/* Admin Picture & Admin Picture Folder 共通 */
+	section.picture div.inner div.error-message {
+		width: 88%;
+		margin: 16px auto;
+	}
+	/* Admin Picture & Admin Picture Folder 共通 終了 */
+
+	/* Admin Picture Folder */
+	section.picture div.inner form div.manage-buttons {
+		width: 55%;
+	}
+	/* Admin Picture Folder 終了 */
+
+	/* Admin Picture Folder Upload */
+	section#upload div.inner {
+		width: 55%;
+	}
+
+	section#upload div.inner form {
+		margin: 32px auto;
+	}
+
+	section#upload
+		div.inner
+		form
+		div.input-area
+		input:not(:placeholder-shown)
+		+ label {
+		font-size: 18px;
+	}
+	/* Admin Picture Folder Upload 終了 */
+
+	/* signup/login ページ */
+
+	section.login-signup {
+		margin: 88px auto;
+	}
+
+	form div.input-area {
+		position: relative;
+		margin: 48px 0;
+	}
+
+	form div.input-area input + label {
+		font-size: 14px;
+	}
+
+	form div.input-area input:focus + label {
+		font-size: 12px;
+	}
+
+	form div.policy-confirmation .confirmation-btn input {
+		font-size: 20px;
+	}
+	/* signup/login ページ 終了 */
+}
+
+@media screen and (min-width: 1025px) {
+	header {
+		width: 100%;
+	}
+	header #drawer-icon {
+		display: none;
+	}
+
+	header nav {
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: stretch;
+
+		width: unset;
+		height: auto;
+
+		margin-left: 32px;
+
+		position: relative;
+		-webkit-transform: none;
+		transform: none;
+
+		background-color: unset;
+	}
+	/* headerの共通ul CSS */
+	header nav ul {
+		margin: 0;
+	}
+	header nav ul li {
+		margin: 12px 24px;
+
+		color: black;
+		font-size: 15px;
+	}
+
+	header nav ul li a {
+		text-decoration: none;
+		color: black;
+	}
+	/* headerの共通ul CSS 終了*/
+
+	/* header ul#global-menu */
+	header nav ul#global-menu {
+		width: unset;
+
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+
+		margin: 0;
+	}
+
+	header nav ul#global-menu li a#pc-logo img {
+		width: 75px;
+	}
+
+	header nav ul#global-menu li select {
+		width: unset;
+
+		font-size: 15px;
+
+		color: white;
+		background-color: unset;
+
+		background-image: linear-gradient(45deg, transparent 50%, white 20%),
+			linear-gradient(135deg, white 50%, transparent 50%);
+		background-size: 5px 5px, 5px 5px;
+		background-position: calc(80% - 10px) 50%, calc(80% - 5px) 50%;
+		background-repeat: no-repeat;
+	}
+	header nav ul#global-menu li:nth-of-type(3) select {
+		width: 75%;
+	}
+	/* header ul#global-menu 終了*/
+
+	/* header用CSS 終了*/
+
+	/* セクション共通要素 */
+
+	section {
+		margin: 48px auto;
+	}
+	section div.titles {
+		width: 60%;
+	}
+
+	section h2.section-title {
+		padding-left: 66px;
+		font-size: 37.5px;
+		line-height: 1;
+	}
+
+	section h2.section-title::before {
+		width: 48px;
+	}
+
+	section p.section-subtitle {
+		margin-top: 18px;
+		padding-left: 70px;
+		font-size: 18px;
+	}
+
+	section div.inner {
+		width: 50%;
+		margin: 0 auto;
+	}
+	/* セクション共通要素 終了*/
+
+	/* トップページ */
+	section#home div.pictures-test {
+		width: 100%;
+
+		margin: 50px auto;
+	}
+
+	section#home div.pictures-test img {
+		height: 65vh;
+	}
+	/* トップページ 終了*/
+
+	/* Adminページ */
+	section#admin div.inner div.apps-list {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+	section#admin div.inner div.app-item {
+		width: 40%;
+		margin: 12px 0;
+	}
+	/* Adminページ 終了 */
+
+	/* Admin Picture　共通 */
+	section.picture div.inner > a {
+		padding-left: 0;
+	}
+	/* Admin Picture　共通 終了 */
+
+	/* Admin Picture */
+	section#manage div.folder-list div.folder {
+		width: 100%;
+	}
+	/* Admin Picture 終了 */
+
+	/* Admin Picture Folder */
+
+	section.picture div.inner form div.manage-buttons {
+		width: 55%;
+	}
+
+	section.picture
+		div.inner
+		form
+		div.manage-buttons
+		div.confirmation-btn
+		input[type="button"],
+	section.picture div.inner form div.manage-buttons input[type="submit"] {
+		font-size: 22px;
+	}
+
+	div.image-gallery {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin: 12px auto;
+	}
+
+	div.image-gallery::after {
+		content: "";
+		width: 30%;
+		margin: 0 auto;
+	}
+
+	div.image-gallery div.image {
+		width: 30%;
+	}
+
+	div.image-gallery div.image label img {
+		height: 25vh;
+	}
+	/* Admin Picture Folder 終了 */
+
+	/* Admin Picture & Admin Picture Folder 共通 */
+	section.picture div.inner div.error-message {
+		width: 100%;
+		margin: 12px auto;
+	}
+	/* Admin Picture & Admin Picture Folder 共通 終了 */
+
+	/* Admin Picture Folder Upload */
+	section#upload div.titles {
+		width: 60%;
+	}
+
+	section#upload div.inner {
+		width: 55%;
+	}
+	/* Admin Picture Folder Upload 終了 */
+
+	.error_mesg {
+		font-size: 15px;
+	}
+
+	section.login-signup {
+		margin: 48px auto;
+	}
+
+	form div.input-area {
+		margin: 56px 0;
+	}
+
+	form div.input-area input {
+		font-size: 18px;
+	}
+
+	form div.input-area input + label {
+		font-size: 14px;
+		margin-top: -0.5%;
+	}
+
+	form div.input-area input:focus + label {
+		font-size: 12px;
+	}
+
+	section.login-signup
+		form
+		div.input-area
+		input:not(:placeholder-shown)
+		+ label {
+		font-size: 12px;
+	}
+
+	form div.policy-confirmation {
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	form div.policy-confirmation .confirmation-btn input {
+		font-size: 22px;
+	}
+}

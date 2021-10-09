@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        {% block head %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="format-detection" content="telephone=no">
+
+        <title>{% block title %}{% endblock %} | ALEC HIRATA</title>
+
+        <meta name="description" content="">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="">
+        <meta property="og:url" content="">
+
+        <meta property="og:site_name" content="AND SPACE">
+        <meta property="og:locale" content="ja_JP">
+        <meta name="twitter:card" content="summary_large_image">
+        <link rel="canonical" href="">
+        <link rel="shortcut icon" href="" type="image/x-icon">
+        <link rel="apple-touch-icon" sizes="180x180" href="">
+        <link rel="icon" type="image/png" sizes="32x32" href="">
+        <link rel="icon" type="image/png" sizes="16x16" href="">
+        <!-- Load /plugin folder -->
+
+        <!-- css/style -->
+        <link rel="preconnect" href="https://fonts.googleapis.com"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
+
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}" />
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+            <input id="nav-input" type="checkbox" class="nav-unshown">
+            <label id="drawer-icon" for="nav-input" class=""><span></span><span></span><span></span></label>
+            <label class="nav-unshown" id="drawer-close" for="nav-input"></label>
+
+            <h1><a href="{{ url_for('main.index') }}">ALEC HIRATA</a></h1>
+            <nav>
+                <ul id="global-menu">
+
+                    <li><a href="{{ url_for('main.index') }}">TOP PAGE</a></li>
+
+                    <li><a href="{{ url_for('main.about') }}">ABOUT</a></li>
+
+                    {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('admin.home') }}">ADMIN</a></li>
+                    {% endif %}
+
+                    {% if current_user.is_authenticated %}
+                        <li><a href="{{ url_for('auth.logout') }}">LOGOUT</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            {% block content %}
+
+            {% endblock %}
+        </main>
+    </body>
+</html>

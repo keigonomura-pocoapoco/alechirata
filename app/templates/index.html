@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}HOME{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='slick/slick.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='slick/slick-theme.css')}}"/>
+    <script rel="text/javascript" type="text/javascript" src="{{url_for('static',filename='slick/slick.js')}}"></script>
+
+    <script rel="text/javascript" type="text/javascript" src="{{url_for('static',filename='js/slider.js')}}"></script>
+    
+{% endblock %}
+
+{% block content %}
+    <section id="home">
+
+        <div class="pictures-test">
+
+        {% if not pictures %}
+            <p>No Picture selected for Top Page</p>
+
+        {% else %}
+
+            {% for picture in pictures: %}
+                <div class="images">
+                    <img src="/static/images/{{picture.folder}}/{{picture.picture_url}}">
+                </div>
+            {% endfor %}
+
+        {% endif %}
+
+        </div>
+
+    </section>
+{% endblock %}

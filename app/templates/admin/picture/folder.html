@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Picture{% endblock %}
+    
+{% block content %}
+
+<section class="picture" id="folder">
+
+    <div class="titles">
+        <h2 class="section-title"><a href="{{ url_for('admin.picture') }}">フォルダー</a>｜{{folder_name}}</h2>
+        <p class="section-subtitle">Photo Folder | {{folder_name}}</p>
+    </div>
+
+    <div class="inner">
+        <a href="/admin/picture/folder/{{folder_name}}/upload/">Upload New Picture</a>  
+        
+        {% with messages = get_flashed_messages() %} 
+			{% if messages %} 
+				{% for message in messages: %}
+				<div class="error-message">{{ messages[0] }}</div>
+				{% endfor%} 
+			{% endif %} 
+		{% endwith %}
+
+        <form action="/admin/picture/folder/{{folder_name}}/" method="POST">
+            <div class="image-gallery">
+            {% for picture in pictures: %}
+                <div class="image">
+                    <input type="checkbox" id="{{picture.id}}" name="selected" value="{{picture.id}}">
+                    <label for="{{picture.id}}">
+                        <img id="{{picture.id}}" src="/static/images/{{folder_name}}/{{picture.picture_url}}">
+                    </label>
+                </div>
+            {% endfor %}
+            </div>
+
+            <div class="manage-buttons">
+                <div class="policy-confirmation">
+                    <div class="confirmation-btn"><input type="submit" value="Delete Picture(s)"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</section>
+
+{% endblock %}

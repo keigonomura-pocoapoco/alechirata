@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}CREATE NEW FOLDER{% endblock %}
+
+{% block content %}
+<section class="picture" id="new_folder">
+
+    <div class="titles">
+        <h2 class="section-title">新しいフォルダーを作成</h2>
+        <p class="section-subtitle">Create New Folder(s)</p>
+    </div>
+
+    <div class="inner">
+        {% from "_formhelpers.html" import render_field %}
+        <form action="/admin/picture/create_folder/" method="POST" enctype="multipart/form-data">
+            {% with messages = get_flashed_messages(category_filter=["error"]) %}
+                {% if messages %}
+                    {% for message in messages: %}
+                    <div class="error-message">
+                        {{ messages[0] }}
+                    </div>
+                    {% endfor%}
+                {% endif %}
+            {% endwith %}
+
+            {{ render_field(form.folder) }}
+
+            <div class="policy-confirmation">
+                <div class="confirmation-btn"><input type="submit" value="Create New Folder"></div>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

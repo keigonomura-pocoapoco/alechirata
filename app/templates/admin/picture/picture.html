@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% block title %}Picture{% endblock %} {% block
+content %}
+
+<section class="picture" id="manage">
+	<div class="titles">
+		<h2 class="section-title">写真フォルダーを管理</h2>
+		<p class="section-subtitle">Manage Picture's Folder</p>
+	</div>
+
+	<div class="inner">
+		{% with messages = get_flashed_messages() %} 
+			{% if messages %} 
+				{% for message in messages: %}
+				<div class="error-message">{{ messages[0] }}</div>
+				{% endfor%} 
+			{% endif %} 
+		{% endwith %}
+
+		<form action="/admin/picture/" method="POST">
+			<div class="folder-list">
+				{% for folder in folders: %}
+					{% if folder.id == 1 %}
+					<div class="folder">
+						<label for="{{folder.name}}">
+							<a href="/admin/picture/folder/{{folder.name}}">{{folder.name}}</a>
+						</label>
+					</div>
+					{% endif %}
+
+					{% if not folder.id == 1 %}
+					<div class="folder">
+						<input type="checkbox" id="{{folder.name}}" name="selected" value="{{folder.id}}">
+						<label for="{{folder.name}}">
+							<a href="/admin/picture/folder/{{folder.name}}">{{folder.name}}</a>
+						</label>
+					</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+			<div class="manage-buttons">
+				<div class="policy-confirmation">
+					<div class="confirmation-btn"><a href="{{ url_for('admin.create_folder') }}"><input type="button" value="Create New Folder(s)"></a></div>
+				</div>
+				<div class="policy-confirmation">
+					<div class="confirmation-btn"><input type="submit" value="Delete Folder(s)"></div>
+				</div>
+			</div>
+		</form>
+	</div>
+</section>
+
+{% endblock %}

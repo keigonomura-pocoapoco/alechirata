@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}ADMIN{% endblock %}
+    
+{% block content %}
+
+    <section id="admin">
+        <div class="titles">
+            <h2 class="section-title">平田アレクを設計</h2>
+            <p class="section-subtitle">Design Alc Hirata</p>
+        </div>
+
+        <div class="inner">
+            <div class="apps-list">
+                <div class="app-item">
+                    <a href="{{ url_for('admin.picture') }}">
+                        {% if picture: %}
+                            <img src="/static/images/{{picture.folder}}/{{picture.picture_url}}">
+                        {% endif %}
+                        <p>Manage Pictures</p>
+                    </a>  
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+{% endblock %}
