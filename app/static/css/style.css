@@ -266,14 +266,13 @@ section div.inner {
 
 /* トップページ */
 
-section#home div.pictures-test {
+section#home div.portfolio {
 	width: 100%;
 
 	margin: 20px auto;
 }
 
-section#home div.pictures-test img {
-	width: 100%;
+section#home div.portfolio img {
 	height: 82.5vh;
 	object-fit: cover;
 }
@@ -698,6 +697,154 @@ section#about div.inner p {
 }
 /* Aboutページ 終了 */
 
+/* PROJECTページ */
+section#project {
+	color: white;
+	background-color: black;
+}
+
+section#project div.project-show {
+	position: relative;
+	margin-top: 80px;
+}
+
+section#project div.project-show img {
+	width: 100%;
+	margin: 0 auto;
+	object-fit: cover;
+}
+
+/* 
+section#project div.project-show img {
+	height: 65vh;
+	margin: 0 auto;
+	object-fit: cover;
+}
+*/
+
+section#project > div.project-information {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+
+	margin: 0 0 15px 15px;
+}
+
+section#project div.project-information h2 {
+	font-size: 18px;
+	color: white;
+}
+
+section#project div.project-information p {
+	font-size: 14px;
+	margin-top: 4px;
+}
+
+section#project div.slide-counter {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+
+	margin: 0 15px 15px 0px;
+
+	color: white;
+}
+
+section#project div.commentary-section {
+	position: absolute;
+	bottom: 15px;
+	left: 0;
+	right: 0;
+
+	width: 100%;
+
+	text-align: center;
+
+	z-index: 4;
+}
+
+section#project div.commentary-section div.commentary {
+	width: 80%;
+	margin: 0 auto;
+
+	padding: 30px;
+
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+	transition: 0.35s ease-in-out;
+
+	-webkit-transform: translateY(105%);
+	transform: translateY(105%);
+
+	font-weight: normal;
+
+	text-align: left;
+
+	color: white;
+	background-color: black;
+
+	z-index: 4;
+}
+
+section#project
+	div.commentary-section
+	div.commentary
+	> div.project-information {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+
+	width: 100%;
+}
+section#project div.commentary-section div.commentary h2,
+section#project div.commentary-section div.commentary p {
+	margin: 4px 0;
+}
+
+section#project div.commentary-section div.commentary p.explanation {
+	margin: 8px 0;
+}
+
+section#project .commentary-unshown {
+	display: none;
+}
+
+section#project #commentary-close {
+	display: none;
+
+	position: fixed;
+	top: 0;
+	right: 0;
+
+	width: 100%;
+	height: 100%;
+
+	transition: 0.5s ease-in-out;
+
+	opacity: 0.9;
+
+	background-color: black;
+
+	z-index: 4;
+}
+
+/*チェックが入ったら下地を入れる。*/
+section#project #commentary-input:checked ~ #commentary-close {
+	/* これがないとinputを外す場所がなくなる。*/
+	display: block;
+}
+
+/* 同様に下地の上にリストを表示　*/
+section#project #commentary-input:checked ~ div.commentary {
+	-webkit-transform: translateY(15%);
+	transform: translateY(15%);
+}
+
+/* PROJECTページ 終了 */
+
 @media screen and (min-width: 520px) {
 	header #drawer-icon {
 		top: 30px;
@@ -944,13 +1091,13 @@ section#about div.inner p {
 	/* セクション共通要素 終了*/
 
 	/* トップページ */
-	section#home div.pictures-test {
+	section#home div.portfolio {
 		width: 100%;
 
 		margin: 50px auto;
 	}
 
-	section#home div.pictures-test img {
+	section#home div.portfolio img {
 		height: 65vh;
 	}
 	/* トップページ 終了*/

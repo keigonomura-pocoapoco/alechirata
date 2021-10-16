@@ -48,6 +48,8 @@
 
                     <li><a href="{{ url_for('main.about') }}">ABOUT</a></li>
 
+                    <li><a href="{{ url_for('main.projects') }}">PROJECTS</a></li>
+
                     {% if current_user.is_authenticated %}
                     <li><a href="{{ url_for('admin.home') }}">ADMIN</a></li>
                     {% endif %}

@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block title %}{{folder_name}} {% endblock %}
+
+{% block head %}
+    {{ super() }}
+
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='slick/slick.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='slick/slick-theme.css')}}"/>
+    <script rel="text/javascript" type="text/javascript" src="{{url_for('static',filename='slick/slick.js')}}"></script>
+
+    <script rel="text/javascript" type="text/javascript" src="{{url_for('static',filename='js/slider.js')}}"></script>
+
+    <style>
+        body {
+            color: white;
+            background-color: black;
+        }
+
+        header #drawer-icon span {
+                background-color: white;
+        }
+
+        header h1 a {
+            color: white;
+        }
+
+
+        @media screen and (min-width: 520px) {
+
+            header h1 a, 
+            header nav ul li a {
+                animation: fadeOut 2.5s ease 0s 1 normal;
+                -webkit-animation: fadeOut 2.5s ease 0s 1 normal;
+
+                transition: 1s color ease;
+            }
+
+            @keyframes fadeOut {
+                0% {color: white}
+                100% {color: black}
+            }
+
+            @-webkit-keyframes fadeOut {
+                0% {color: white}
+                100% {color: black}
+            }
+
+            header:hover h1 a, 
+            header:hover nav ul li a {
+                color: white;
+            }
+
+            /* 
+
+            .slick-prev:before, .slick-next:before {
+                animation: fadeIn 2s ease 0s 1 normal;
+                -webkit-animation: fadeIn 2s ease 0s 1 normal;
+
+                color: white;
+            }
+
+            @keyframes fadeIn {
+                0% {color: black}
+                100% {color: white}
+            }
+
+            @-webkit-keyframes fadeIn {
+                0% {color: black}
+                100% {color: white}
+            }
+
+            */
+        }
+    </style>
+    
+{% endblock %}
+
+    
+{% block content %}
+
+<section id="project">
+
+    <div class="inner">
+
+        {% if not pictures %}
+            <p>No Picture selected for {{folder_name}}.</p>
+
+        {% else %}
+
+            <div class="project-show">
+
+                {% for picture in pictures: %}
+                    <label class="image" for="{{picture.id}}">
+                        <img id="{{picture.id}}" src="/static/images/{{folder_name}}/{{picture.picture_url}}">
+                    </label>
+                {% endfor %}
+
+            </div>
+
+            <div class="slide-counter"><span class="current"></span>/<span class="total"></span></div>
+
+        {% endif %}
+    </div>
+
+    <div class="project-information">
+        <h2>{{ folder_name }}</h2>
+    </div>
+
+    <div class="commentary-section">
+        <input id="commentary-input" type="checkbox" class="commentary-unshown">
+        <label id="drawer-icon" for="commentary-input" class="commentary-check"></label>
+        <label class="commentary-unshown" id="commentary-close" for="commentary-input"></label>
+
+        <div class="commentary">
+            <div class="project-information">
+                <h2>{{ folder_name }}</h2>
+                <p>{{ project_date }}</p>
+            </div>
+            <p class="explanation">This project is smth smth ~</p>
+        </div>
+    </div>
+
+
+</section>
+
+{% endblock %}
