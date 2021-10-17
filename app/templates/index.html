@@ -15,22 +15,23 @@
 {% block content %}
     <section id="home">
 
-        <div class="portfolio">
-
         {% if not pictures %}
             <p>No Picture selected for Portfolio</p>
 
         {% else %}
+
+        <div class="portfolio">
 
             {% for picture in pictures: %}
                 <div class="images">
                     <img src="/static/images/{{picture.folder}}/{{picture.picture_url}}">
                 </div>
             {% endfor %}
+            
+        </div>
 
         {% endif %}
 
-        </div>
 
     </section>
 {% endblock %}
