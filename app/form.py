@@ -24,7 +24,7 @@ class PictureUploadForm(Form):
 
 class NewFolderForm(Form):
     folder = StringField('フォルダー名', [validators.Length(min=3, message="*3文字以上で入力してください"), validators.DataRequired(message="*フォルダー名を入力してください")], render_kw={"placeholder": "フォルダー"})
-    commentary = StringField('解説', [validators.Length(min=3, message="*3文字以上で入力してください"), validators.DataRequired(message="*解説を入力してください")], render_kw={"placeholder": "解説 / Commentary"})
+    commentary = TextAreaField('解説', [validators.Length(min=3, message="*3文字以上で入力してください"), validators.DataRequired(message="*解説を入力してください")], render_kw={"placeholder": "解説 / Commentary"})
     def validate_folder(self, folder):
         folder = Folder.query.filter_by(name=folder.data).first()
         if folder:

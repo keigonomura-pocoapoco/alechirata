@@ -31,6 +31,6 @@ def project(folder_name):
     if session.query(Picture).filter_by(folder=folder_name).first() is not None:
         pictures = session.query(Picture).filter_by(folder=folder_name)
     
-    return render_template('project.html', pictures=pictures, folder_name=folder_name, project_date=folder.created_at.strftime("%B %d, %Y"))
+    return render_template('project.html', pictures=pictures, folder_name=folder_name, commentary=folder.commentary, project_date=folder.created_at.strftime("%B %d, %Y"))
 
     

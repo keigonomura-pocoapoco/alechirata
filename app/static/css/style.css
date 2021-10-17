@@ -490,6 +490,24 @@ div.image-gallery div.image label img {
 }
 /* Admin Picture Folder 終了 */
 
+/* Admin Picture New Folder */
+section#new_folder form textarea {
+	width: 100%;
+	height: 200px;
+	resize: none;
+
+	padding: 5px;
+
+	border: 1px solid #708090;
+	outline: none;
+
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+/* Admin Picture New Folder 終了 */
+
 /* Admin Picture Folder Upload */
 section#upload div.inner {
 	width: 85%;
@@ -590,7 +608,8 @@ form div.input-area > input {
 	border-bottom: 1px solid #708090;
 }
 
-form div.input-area input + label {
+form div.input-area input + label,
+form div.input-area textarea + label {
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -601,28 +620,48 @@ form div.input-area input + label {
 	font-size: 12.5px;
 }
 
-form div.input-area input::placeholder {
+form div.input-area textarea + label {
+	top: -10px;
+	left: 0px;
+	padding: 0px 3px;
+	background-color: white;
+}
+
+form div.input-area input::placeholder,
+form div.input-area textarea::placeholder {
 	color: transparent;
 }
 
-form div.input-area input:focus {
+form div.input-area input:focus,
+form div.input-area textarea:focus {
 	border-bottom: 1px solid #06c;
 }
 
-form div.input-area input:focus + label {
+form div.input-area input:focus + label,
+form div.input-area textarea:focus + label {
 	transform: translateY(-1rem) scale(0.75);
 	font-size: 10px;
 	color: #06c;
 }
 
-form div.input-area input:not(:placeholder-shown) {
+form div.input-area textarea:focus + label {
+	transform: translateY(-0.35rem) scale(0.75);
+}
+
+form div.input-area input:not(:placeholder-shown),
+form div.input-area textarea:not(:placeholder-shown) {
 	border-bottom: 1px solid #06c;
 }
 
-form div.input-area input:not(:placeholder-shown) + label {
+form div.input-area input:not(:placeholder-shown) + label,
+form div.input-area textarea:not(:placeholder-shown) + label {
 	transform: translateY(-1rem) scale(0.75);
 	font-size: 10px;
 	color: #06c;
+}
+
+form div.input-area textarea:not(:placeholder-shown) + label {
+	transform: translateY(-0.35rem) scale(0.75);
 }
 
 section.login-signup form div.input-area input[type="checkbox"] {
@@ -806,6 +845,7 @@ section#project div.commentary-section div.commentary p {
 
 section#project div.commentary-section div.commentary p.explanation {
 	margin: 8px 0;
+	white-space: pre-line;
 }
 
 section#project .commentary-unshown {

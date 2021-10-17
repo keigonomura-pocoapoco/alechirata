@@ -75,6 +75,7 @@ def create_folder():
 
     if request.method == 'POST' and form.validate():
         folders = [x.strip() for x in form.folder.data.split(',')]
+        commentary = form.commentary.data
 
         for folder in folders:
 
@@ -85,7 +86,7 @@ def create_folder():
             
             folder_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), './static/images', folder)
             os.mkdir(folder_path)
-            new_folder = Folder(name=folder, created_at=datetime.now()) 
+            new_folder = Folder(name=folder, commentary=commentary, created_at=datetime.now()) 
             session.add(new_folder)
             session.commit()
 
