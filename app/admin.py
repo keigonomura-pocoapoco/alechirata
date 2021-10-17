@@ -1,6 +1,6 @@
 from flask import render_template,redirect,url_for,Blueprint,request,flash
 from flask_login import login_required, current_user
-from .form import PictureUploadForm, NewFolderForm
+from .form import PictureUploadForm, NewFolderForm, CommentaryEditForm
 
 from werkzeug.utils import secure_filename
 
@@ -19,7 +19,6 @@ admin = Blueprint("admin", __name__, template_folder='templates')
 @login_required
 def home():
     picture = session.query(Picture).order_by(Picture.id.desc()).first()
-
     return render_template('admin/admin.html', picture=picture)
 
 @admin.route("/admin/picture/", methods=['GET','POST'])
@@ -123,3 +122,23 @@ def upload(folder_name):
         
         
     return render_template('admin/picture/upload.html', form=form, folder_name=folder_name)
+
+
+@admin.route("/admin/picture/folder/<folder_name>/edit/", methods=['GET','POST'])
+@login_required
+def edit(folder_name):
+    form = CommentaryEditForm(request.form)
+
+    folder = session.query(Folder).filter_by(name=folder_name).first()
+
+    if request.method == 'GET':
+        form.commentary.data = folder.commentary
+
+    if request.method == 'POST':
+        new_commentary = form.commentary.data
+        folder.commentary = new_commentary
+        session.commit()
+        flash('*解説の編集が完了しました。')
+        return redirect(url_for('admin.folder', folder_name=folder_name))
+
+    return render_template('admin/picture/edit.html', form=form, folder_name=folder_name)

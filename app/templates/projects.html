@@ -4,7 +4,7 @@
     
 {% block content %}
 
-<section class="picture" id="folder">
+<section class="picture" id="projects">
 
     <div class="titles">
         <h2 class="section-title">プロジェクト</h2>
@@ -12,12 +12,15 @@
     </div>
 
     <div class="inner">
-        <div class="folder-list">
+        <div class="project-list">
             {% for folder in folders: %}
                 {% if not folder.id == 1 %}
-                <div class="folder">
-                    <p><a href="/project/{{folder.name}}/">{{folder.name}}</p>
-                </div>
+                <div class="project">
+                    <a href="/project/{{folder.name}}/">
+                        <p>{{folder.name}}</p>
+                        <p class="project-date">{{folder.created_at.strftime("%B %d, %Y")}}</p>
+                    </a>
+                </label>
                 {% endif %}
             {% endfor %}
         </div>

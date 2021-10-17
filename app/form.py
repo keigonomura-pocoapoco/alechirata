@@ -30,6 +30,9 @@ class NewFolderForm(Form):
         if folder:
             flash('*同じ名前のフォルダーが存在します。', 'error')
             return redirect(url_for('admin.create_folder')) # if the user doesn't exist or password is wrong, reload the page
+
+class CommentaryEditForm(Form):
+    commentary = TextAreaField('解説', [validators.Length(min=3, message="*3文字以上で入力してください"), validators.DataRequired(message="*解説を入力してください")], render_kw={"placeholder": "解説 / Commentary"})
     
     
 

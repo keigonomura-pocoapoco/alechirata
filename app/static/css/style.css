@@ -309,20 +309,26 @@ section#admin div.inner div.app-item a img {
 /* Admin Pictureページ 共通*/
 
 section.picture div.inner > a {
+	display: block;
+
+	margin: 8px 0;
+	padding-left: 38px;
+
 	font-weight: bold;
 	text-decoration: none;
 	color: #06c;
-	padding-left: 38px;
 }
 /* Admin Pictureページ 共通 終了 */
 
 /* Admin Picture */
-section#manage div.folder-list {
+section#manage div.folder-list,
+section#projects div.project-list {
 	width: 100%;
 	margin: 12px auto;
 }
 
-section#manage div.folder-list div.folder {
+section#manage div.folder-list div.folder,
+section#projects div.project-list div.project {
 	width: 80%;
 	margin: 0 auto;
 }
@@ -460,7 +466,6 @@ section#manage div.folder-list div.folder label a {
 /* Admin Picture Folder */
 div.image-gallery {
 	width: 100%;
-	margin: 12px auto;
 }
 
 div.image-gallery div.image {
@@ -473,6 +478,10 @@ div.image-gallery div.image label {
 	margin: 8px auto;
 	padding: 10px;
 	border-top: 1px solid #fff;
+}
+
+div.image-gallery div.image:first-of-type label {
+	margin: 0 auto;
 }
 
 div.image-gallery div.image input:checked + label img {
@@ -491,7 +500,7 @@ div.image-gallery div.image label img {
 /* Admin Picture Folder 終了 */
 
 /* Admin Picture New Folder */
-section#new_folder form textarea {
+form textarea {
 	width: 100%;
 	height: 200px;
 	resize: none;
@@ -559,13 +568,23 @@ section#upload div.inner form div.policy-confirmation .confirmation-btn {
 
 /* Admin Picture Folder Upload 終了 */
 
+/* Admin Picture Folder Edit Commentary */
+
+section#edit_commentary form div.policy-confirmation .confirmation-btn input {
+	background-color: #06c;
+	color: white;
+}
+
+/* Admin Picture Folder Edit Commentary 終了 */
+
 /* signup/login ページ */
 section.login-signup {
 	margin: 36px auto;
 }
 
 section.login-signup label::after,
-section#new_folder label::after {
+section#new_folder label::after,
+section#edit_commentary label::after {
 	content: "*";
 	color: #7b3f00;
 }
@@ -632,9 +651,12 @@ form div.input-area textarea::placeholder {
 	color: transparent;
 }
 
-form div.input-area input:focus,
-form div.input-area textarea:focus {
+form div.input-area input:focus {
 	border-bottom: 1px solid #06c;
+}
+
+form div.input-area textarea:focus {
+	border: 1px solid #06c;
 }
 
 form div.input-area input:focus + label,
@@ -648,9 +670,12 @@ form div.input-area textarea:focus + label {
 	transform: translateY(-0.35rem) scale(0.75);
 }
 
-form div.input-area input:not(:placeholder-shown),
-form div.input-area textarea:not(:placeholder-shown) {
+form div.input-area input:not(:placeholder-shown) {
 	border-bottom: 1px solid #06c;
+}
+
+form div.input-area textarea:not(:placeholder-shown) {
+	border: 1px solid #06c;
 }
 
 form div.input-area input:not(:placeholder-shown) + label,
@@ -735,6 +760,34 @@ section#about div.inner p {
 	line-height: 1.5;
 }
 /* Aboutページ 終了 */
+
+/* PROJECTS */
+section#projects div.project-list div.project {
+	width: 80%;
+
+	border-top: 1px solid #708090;
+}
+section#projects div.project-list div.project a {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	width: 100%;
+
+	padding: 12px 0;
+	padding-left: 12px;
+
+	cursor: pointer;
+
+	color: #06c;
+	text-decoration: none;
+}
+
+section#projects div.project-list div.project a p.project-date {
+	font-size: 12px;
+	color: black;
+}
+
+/* PROJECTS終了*/
 
 /* PROJECTページ */
 section#project {
@@ -960,9 +1013,20 @@ section#project #commentary-input:checked ~ div.commentary {
 	/* セクション共通要素 終了*/
 
 	/* Admin Picture */
-	section#manage div.folder-list div.folder {
+	section#manage div.folder-list div.folder,
+	section#projects div.project-list div.project {
 		width: 90%;
 	}
+
+	/* Admin Picture　共通 */
+	section.picture div.inner > a {
+		display: inline;
+		margin-right: 8px;
+
+		padding-left: 12px;
+	}
+	/* Admin Picture　共通 終了 */
+
 	/* Admin Picture 終了 */
 
 	/* Admin Picture & Admin Picture Folder 共通 */
@@ -1158,12 +1222,15 @@ section#project #commentary-input:checked ~ div.commentary {
 
 	/* Admin Picture　共通 */
 	section.picture div.inner > a {
+		display: inline;
 		padding-left: 0;
+		margin-right: 12px;
 	}
 	/* Admin Picture　共通 終了 */
 
 	/* Admin Picture */
-	section#manage div.folder-list div.folder {
+	section#manage div.folder-list div.folder,
+	section#projects div.project-list div.project {
 		width: 100%;
 	}
 	/* Admin Picture 終了 */

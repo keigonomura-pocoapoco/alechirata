@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}EDIT COMMENTARY{% endblock %}
+
+{% block content %}
+<section class="picture" id="edit_commentary">
+
+    <div class="titles">
+        <h2 class="section-title"><a href="/admin/picture/folder/{{folder_name}}">{{folder_name}}</a>｜解説を編集</h2>
+        <p class="section-subtitle">{{folder_name}}</a>｜Edit Commentary</p>
+    </div>
+
+    <div class="inner">
+        {% from "_formhelpers.html" import render_field %}
+        <form action="/admin/picture/folder/{{folder_name}}/edit/" method="POST" enctype="multipart/form-data">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages: %}
+                    <div class="error-message">
+                        {{ messages[0] }}
+                    </div>
+                    {% endfor%}
+                {% endif %}
+            {% endwith %}
+
+            {{ render_field(form.commentary) }}
+
+            <div class="policy-confirmation">
+                <div class="confirmation-btn"><input type="submit" value="Save"></div>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

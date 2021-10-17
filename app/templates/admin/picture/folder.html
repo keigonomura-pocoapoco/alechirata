@@ -12,8 +12,6 @@
     </div>
 
     <div class="inner">
-        <a href="/admin/picture/folder/{{folder_name}}/upload/">Upload New Picture</a>  
-        
         {% with messages = get_flashed_messages() %} 
 			{% if messages %} 
 				{% for message in messages: %}
@@ -21,6 +19,10 @@
 				{% endfor%} 
 			{% endif %} 
 		{% endwith %}
+        
+        <a href="/admin/picture/folder/{{folder_name}}/upload/">Upload New Picture</a>  
+
+        <a href="/admin/picture/folder/{{folder_name}}/edit/">Edit Commentary</a>
 
         <form action="/admin/picture/folder/{{folder_name}}/" method="POST">
             <div class="image-gallery">
