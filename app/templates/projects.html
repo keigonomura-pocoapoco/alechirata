@@ -12,18 +12,27 @@
     </div>
 
     <div class="inner">
-        <div class="project-list">
-            {% for folder in folders: %}
-                {% if not folder.id == 1 %}
-                <div class="project">
-                    <a href="/project/{{folder.name}}/">
-                        <p>{{folder.name}}</p>
-                        <p class="project-date">{{folder.created_at.strftime("%B %d, %Y")}}</p>
-                    </a>
-                </label>
-                {% endif %}
-            {% endfor %}
-        </div>
+
+        {% if not folders %}
+            <p>No Projects yet.</p>
+
+        {% else %}
+
+            <div class="project-list">
+                {% for folder in folders: %}
+
+                    {% if not folder.id == 1 %}
+                    <div class="project">
+                        <a href="/project/{{folder.name}}/">
+                            <p>{{folder.name}}</p>
+                            <p class="project-date">{{folder.created_at.strftime("%B %d, %Y")}}</p>
+                        </a>
+                    </label>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+        {% endif %}
     </div>
 
 </section>

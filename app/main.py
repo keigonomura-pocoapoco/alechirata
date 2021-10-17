@@ -22,6 +22,8 @@ def about():
 @main.route("/project")
 def projects():
     folders = session.query(Folder).all()
+    if folders is None:
+        folders = ''
     return render_template('projects.html', folders=folders)
 
 @main.route("/project/<folder_name>/", methods=['GET','POST'])
