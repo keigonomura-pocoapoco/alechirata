@@ -274,6 +274,7 @@ section#home div.portfolio {
 
 section#home div.portfolio img {
 	height: 82.5vh;
+	width: 100%;
 	object-fit: cover;
 }
 
