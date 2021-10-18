@@ -807,14 +807,6 @@ section#project div.project-show img {
 	object-fit: cover;
 }
 
-/* 
-section#project div.project-show img {
-	height: 65vh;
-	margin: 0 auto;
-	object-fit: cover;
-}
-*/
-
 section#project > div.project-information {
 	position: absolute;
 	bottom: 0px;
@@ -1204,6 +1196,7 @@ section#project #commentary-input:checked ~ div.commentary {
 
 	section#home div.portfolio img {
 		height: 65vh;
+		width: unset;
 	}
 	/* トップページ 終了*/
 
@@ -1332,4 +1325,14 @@ section#project #commentary-input:checked ~ div.commentary {
 	form div.policy-confirmation .confirmation-btn input {
 		font-size: 22px;
 	}
+
+	/* PROJECTS */
+
+	section#project div.project-show img {
+		height: 65vh;
+		margin: 0 auto;
+		object-fit: cover;
+	}
+
+	/* PROJECTS 終了 */
 }

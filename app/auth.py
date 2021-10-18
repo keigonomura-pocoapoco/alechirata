@@ -1,3 +1,4 @@
+import flask
 from flask import Flask,render_template,redirect,url_for,request,Blueprint,flash
 from werkzeug.security import check_password_hash
 from flask_login import login_user, logout_user
@@ -19,6 +20,11 @@ def login():
             return redirect(url_for('auth.login')) 
 
         login_user(user, remember=form.remember.data)
+        flask.session.permanent = True
+
+        if user in session:
+            print('hello')
+
         return redirect(url_for('admin.home'))
 
     return render_template('login.html', form=form)

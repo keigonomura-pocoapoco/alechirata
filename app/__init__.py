@@ -8,6 +8,8 @@ from .models.picture import Picture
 from .models.folder import Folder
 from .models.database import session
 
+from datetime import timedelta
+
 from .config.config import CONNECT_STR
 
 from flask_admin.contrib.sqla import ModelView
@@ -20,6 +22,7 @@ def create_app():
     app.config['SECRET_KEY'] = 'here'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ejvchrmncdntmt:a46905a0329423170a3da2c4e937f57f1590ac3cfcff3d8daed25278606e64b5@ec2-54-145-188-92.compute-1.amazonaws.com:5432/d634oto7gkjca'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=30)
     app.config['UPLOAD_FOLDER'] = 'static/images'
     app.config['MAIL_SERVER'] = 'mail74.onamae.ne.jp'
     app.config['MAIL_PORT'] = 465
