@@ -99,8 +99,8 @@ def create_folder():
 ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif', 'mp4', 'mov'}
 def allowed_file(filename, form, folder_name):
     path, ext = os.path.splitext(filename)
-    if ext not in ALLOWED_EXTENSIONS:
-        return flash('*' + ext + '拡張子がサポートされていません。')
+    #if ext not in ALLOWED_EXTENSIONS:
+        #return flash('*' + ext + '拡張子がサポートされていません。')
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
     
 @admin.route("/admin/picture/folder/<folder_name>/upload/", methods=['GET','POST'])
