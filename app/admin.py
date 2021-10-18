@@ -97,10 +97,8 @@ def create_folder():
 
 
 ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif', 'mp4', 'mov'}
-def allowed_file(filename, form, folder_name):
-    path, ext = os.path.splitext(filename)
-    #if ext not in ALLOWED_EXTENSIONS:
-        #return flash('*' + ext + '拡張子がサポートされていません。')
+def allowed_file(filename):
+    path, ext = os.path.splitext(file_path)
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
     
 @admin.route("/admin/picture/folder/<folder_name>/upload/", methods=['GET','POST'])
@@ -111,15 +109,15 @@ def upload(folder_name):
     if request.method == 'POST':
         pictures = request.files.getlist(form.pictures.name)
         for picture in pictures:
-            if allowed_file(picture.filename, form, folder_name):
+            if allowed_file(picture.filename):
                 picture_url = secure_filename(picture.filename)
                 basedir = os.path.abspath(os.path.dirname(__file__))
                 picture.save(os.path.join(os.path.abspath(os.path.dirname(__file__)), './static/images/', folder_name, picture_url))
                 new_upload = Picture(picture_url=picture_url, folder=folder_name, uploaded_at=datetime.now())
                 session.add(new_upload)
                 session.commit()
-                flash('*アップロードが完了しました。')
         
+        flash('*アップロードが完了しました。')
         new_pictures = session.query(Picture).filter_by(folder=folder_name)
         return redirect(url_for('admin.folder', folder_name=folder_name, pictures=new_pictures))
         
