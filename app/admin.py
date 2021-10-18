@@ -98,7 +98,6 @@ def create_folder():
 
 ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif', 'mp4', 'mov'}
 def allowed_file(filename):
-    path, ext = os.path.splitext(file_path)
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
     
 @admin.route("/admin/picture/folder/<folder_name>/upload/", methods=['GET','POST'])
