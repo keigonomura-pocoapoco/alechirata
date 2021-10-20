@@ -804,7 +804,7 @@ section#project div.project-show {
 section#project div.project-show img {
 	width: 100%;
 	margin: 0 auto;
-	object-fit: cover;
+	object-fit: contain;
 }
 
 section#project > div.project-information {
@@ -1331,7 +1331,6 @@ section#project #commentary-input:checked ~ div.commentary {
 	section#project div.project-show img {
 		height: 65vh;
 		margin: 0 auto;
-		object-fit: cover;
 	}
 
 	/* PROJECTS 終了 */

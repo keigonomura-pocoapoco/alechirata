@@ -29,8 +29,7 @@ $(function(){
         fade: true,
         centerMode: true,
         focusOnSelect: true,
-        arrows: false,
-        adaptiveHeight: true,
+        arrows: false
     })
     .on('beforeChange', function(event, slick, currentSlide, nextSlide) {
         $('.current').text(nextSlide + 1);
