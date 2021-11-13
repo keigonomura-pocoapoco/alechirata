@@ -19,11 +19,8 @@ def login():
             flash('*ログイン情報に誤りがあります。', 'error')
             return redirect(url_for('auth.login')) 
 
-        login_user(user, remember=form.remember.data)
+        login_user(user)
         flask.session.permanent = True
-
-        if user in session:
-            print('hello')
 
         return redirect(url_for('admin.home'))
 

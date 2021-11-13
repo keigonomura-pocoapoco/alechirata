@@ -20,7 +20,7 @@ def create_app():
     app = Flask(__name__, static_folder='static')
 
     app.config['SECRET_KEY'] = 'here'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ejvchrmncdntmt:a46905a0329423170a3da2c4e937f57f1590ac3cfcff3d8daed25278606e64b5@ec2-54-145-188-92.compute-1.amazonaws.com:5432/d634oto7gkjca'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://alechirata:KeigoUWC0126!@alec-flask11.ceovgizni3bq.ap-northeast-1.rds.amazonaws.com:5432/alc'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=30)
     app.config['UPLOAD_FOLDER'] = 'static/images'

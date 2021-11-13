@@ -11,7 +11,6 @@ class LoginForm(Form):
         validators.DataRequired(message="*パスワードを入力してください")],
         render_kw={"placeholder": "パスワード"}
     )
-    remember = BooleanField('Remember me')
 
     def validate_login(self, email, password):
         user = User.query.filter_by(email=email.data).first()
